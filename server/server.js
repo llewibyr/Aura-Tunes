@@ -12,5 +12,6 @@ const path = require("path");
 // App Config
 dotenv.config();
 const app = express();
+const SpotifyWebApi = require("spotify-web-api");
 
 mongoose.connect(process.env.MONGODB_URI);
