@@ -3,17 +3,21 @@
   "version": "1.0.0",
   "description": "## About - Aura Tunes is a dynamic, personmalized streaming music web app that connects to Spotify to let you access your favorite music that brings you Aura and access new musics and access explore playlists and discover new music as well. Built with React,Node.js and Express. AuraTunes bring your music library to life with an interactive and inutiative interface.",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+ "scripts": {
+  "test": "echo \"Error: no test specified\" && exit 1"
+},
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.21.1",
-    "spotify-web-api-node": "^5.0.2"
-  },
-  "devDependencies": {
-    "nodemon": "^3.1.7"
+    "init": "^0.1.2",
+    "json": "^11.0.0",
+    "method-override": "^3.0.0",
+    "mongoose": "^8.8.1",
+    "morgan": "^1.10.0",
+    "node": "^23.2.0",
+    "nodemon": "^3.1.7",
+    "react": "^18.3.1"
   }
 }
