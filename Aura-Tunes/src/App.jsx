@@ -5,6 +5,7 @@ import Dashboard from './components/Dashboard';
 
 function App() {
   const [accessToken, setAccessToken] = useState(null);
+  const [error, setError] = useState(null);
 
   // Capture the authorization code from URL parameters
   const code = new URLSearchParams(window.location.search).get('code');
