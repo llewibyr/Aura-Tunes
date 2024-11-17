@@ -1,50 +1,39 @@
-# React + TypeScript + Vite
+# Aura-Tunes
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## About - Aura Tunes is a dynamic, personmalized streaming music web app that connects to Spotify to let you access your favorite music that brings you Aura and access new musics and access explore playlists and discover new music as well. Built with React,Node.js and Express. AuraTunes bring your music library to life with an interactive and inutiative interface.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Spotify Login: Securely log in Spotify to access your playlist
 
-## Expanding the ESLint configuration
+- Music Player : Play, pause skip , and adjust volume with an easy-in-app player
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- Playlist Management: Browse and select from your Spotify playlist to customize to your own experience.
 
-- Configure the top-level `parserOptions` property like this:
+- Song Search : Quickly search for songs,artist and albums directly from the application.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Getting Started: (deployment link)
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Attributions :
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+1. [http://www.geekforgeeks] GeeksForGeeks
+2. [http://www.developer.mozilla.org/en-US/] MDN
+3. [https://developer.spotify.com/] Spotify Developers
+4. [https://dev.to/] Dev Community
+5. [https://www.mongodb.com/] Mongo Db
+6. [https://chatgpt.com/] ChatGPT
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## Technologies used:
+
+1. Express
+2. Mongoose
+3. MongoDb
+4. EJS
+5. HTML
+6. JavaScript
+7. REACT
+8. Node
+9. Tailwind Css
+10. Heroku
+
+## Next Step :
