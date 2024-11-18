@@ -50,7 +50,27 @@ export const PlayerContext = createContext();
                 setPlayStatus(false);
             }
         };
-      
+
+
+        const playWithId = (id) => {
+            const song = songsData.find((item)=> item.id === id);
+            if (song) {
+                setTrack(song);
+                audioRef.current.src = song.preview;
+                play();
+            }
+        };
+
+
+        const previous = () => {
+            const currentIndex = songsData.findIndex((item) => item.id === track.id);
+            if ( currentIndex > 0) {
+                const previousTrack = songsData[currentIndex - 1];
+                setTrack(previousTrack);
+                audioRef.current.src = previousTrack.preview;
+                play();
+            }
+        };
 
     }
  
@@ -60,12 +80,23 @@ export const PlayerContext = createContext();
  
  
  
+
+
+
+const contextValue = {
+    audioRef,
+    seekBg,
+    seekBar,
+    songsData,
+    track,
+}
+
  
     return (
-   <PlayerContextProvider value={contextValue}>
-    {props.children}
-   </PlayerContextProvider>
+   <PlayerContext.Provider value={contextValue}>
+    {children}
+   </PlayerContext.Provider>
   )
 
 
-export default PlayerContext
+export default PlayerContextProvider;
