@@ -72,6 +72,59 @@ export const PlayerContext = createContext();
             }
         };
 
+
+        const seekSong = (e) => {
+            const seekWidth = seekBg.current?.offsetWidth || 1;
+            const duration = audioRef.current?.duration || 1;
+            const newTime = (e.nativeEvent.offsetX / seekWidth) * duration;
+            if (audioRef.current) {
+              audioRef.current.currentTime = newTime;
+            }
+          };
+
+
+          const fetchDeezerCharts = async () => {
+            try {
+              const response = await axios.get(deezerChartUrl);
+              setSongsData(response.data.tracks.data); // Set top tracks
+              setAlbumsData(response.data.albums.data); // Set top albumms
+              if (response.data.tracks.data.length > 0) {
+                setTrack(response.data.tracks.data[0]); 
+              }
+            } catch (error) {
+              console.error("Error fetching Deezer charts:", error);
+            }
+          };
+
+          useEffect(() => {
+            const updateTime = () => {
+              if (audioRef.current) {
+                const { currentTime, duration } = audioRef.current;
+                seekBar.current.style.width = `${(currentTime / duration) * 100}%`;
+                setTime({
+                  currentTime: {
+                    second: Math.floor(currentTime % 60),
+                    minute: Math.floor(currentTime / 60),
+                  },
+                  totalTime: {
+                    second: Math.floor(duration % 60),
+                    minute: Math.floor(duration / 60),
+                  },
+                });
+              }
+            };
+        
+            if (audioRef.current) {
+              audioRef.current.ontimeupdate = updateTime;
+            }
+          }, []);
+          
+          
+            useEffect(() => {
+                fetchDeezerCharts();
+            }, []);
+
+
     }
  
  
@@ -89,6 +142,14 @@ const contextValue = {
     seekBar,
     songsData,
     track,
+    playStatus,
+    time,
+    play,
+    pause,
+    playWithId,
+    previous,
+    seekSong,
+    albumData,
 }
 
  
