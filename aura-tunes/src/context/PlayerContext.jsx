@@ -43,7 +43,7 @@ const PlayerContextProvider = (props) => {
       audioRef.current.src = song.preview;  
       play(); 
     } else {
-      console.error("Song not found or audioRef is not initialized.");
+      console.log("Song not found or audioRef is not initialized.");
     }
   };
 
