@@ -1,29 +1,41 @@
-import React, { useState, useEffect } from 'react';
-import SongServices from '../service/SongServices';
+import  { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import * as SongServices from '../service/SongServices';
 
-const SongForm = ({ selectedSong }) => {
+
+const SongForm = (props) => {
   const [formData, setFormData] = useState({
     title: '',
     artist: '',
-    album: '',
     genre: '',
-    albumImage: '',
+    image: '',
     releaseDate: '',
   });
-
+const {songId} = useParams();
   
-  useEffect(() => {
-    if (selectedSong) {
-      setFormData({
-        title: selectedSong.title || '',
-        artist: selectedSong.artist || '',
-        album: selectedSong.album || '',
-        genre: selectedSong.genre || '',
-        albumImage: selectedSong.albumImage || '',
-        releaseDate: selectedSong.releaseDate || '', 
-      });
-    }
-  }, [selectedSong]);
+
+// useEffect(() => {
+//   const fetchSong = async () => {
+//     const songData = await SongServices.getSong(songId);
+//     setFormData(songData);
+//     console.log(
+//       "SongData",songData);
+//     };
+//     if(songId) fetchSong();
+//   }, [songId]);
+
+
+  // useEffect(() => {
+  //   if (selectedSong) {
+  //     setFormData({
+  //       title: selectedSong.title || '',
+  //       artist: selectedSong.artist || '',
+  //       genre: selectedSong.genre || '',
+  //       releaseDate: selectedSong.releaseDate || '', 
+  //       image: selectedSong.image || '',
+  //     });
+  //   }
+  // }, [songId]);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -31,42 +43,52 @@ const SongForm = ({ selectedSong }) => {
       ...prevData,
       [name]: value,
     }));
+    console.log("event", event);
   };
 
- 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+// const handleChange = (event) => {
+//   setFormData({
+//     ...formData,
+//     [event.target.name]: event.target.value
+//   })
+// }
 
-    try {
-      if (selectedSong?._id) {
-        await SongServices.updateSong(selectedSong._id, formData);
-      } else {
-        await SongServices.createSong(formData);
-      }
 
-      
-      // songSaved();
-      setFormData({
-        title: '',
-        artist: '',
-        album: '',
-        genre: '',
-        albumImage: '',
-        releaseDate: '', 
-      });
-    } catch (error) {
-      console.error('Error saving the song:', error);
-    }
-  };
+// const handleSubmit = (event) => {
+//   event.preventDefault();
+//   props.handleAddSong(formData);
+// };
 
+
+
+
+const handleSubmit = (event) => {
+  event.preventDefault();
+  if (songId) {
+    props.handleUpdateSong(songId, formData);
+    console.log("songId", songId);
+  } else {
+    props.handleAddSong(formData);
+    console.log("formData", formData);
+}
+  setFormData({
+    title: '',
+    artist: '',
+    genre: '',
+    image: '',
+    releaseDate: '',
+  });
+}
   return (
     <form onSubmit={handleSubmit}>
       <h2 className="text-lg font-bold mb-4">
-        {selectedSong ? 'Edit Song' : 'Add A New Song'}
+        {/* {songId ? 'Edit Song' : 'Add A New Song'} */}
       </h2>
       <div className="mb-4">
-        <label className="block text-sm font-medium mb-2">Title</label>
+        <label htmlFor='title-input'
+         className="block text-sm font-medium mb-2">Song Name</label>
         <input
+        id='title-input'
           type="text"
           name="title"
           value={formData.title}
@@ -78,8 +100,10 @@ const SongForm = ({ selectedSong }) => {
       </div>
 
       <div className="mb-4">
-        <label className="block text-sm font-medium mb-2">Artist</label>
+        <label htmlFor='artist-input'
+         className="block text-sm font-medium mb-2">Artist</label>
         <input
+        id='artist-input'
           type="text"
           name="artist"
           value={formData.artist}
@@ -90,22 +114,12 @@ const SongForm = ({ selectedSong }) => {
         />
       </div>
 
-      <div className="mb-4">
-        <label className="block text-sm font-medium mb-2">Album</label>
-        <input
-          type="text"
-          name="album"
-          value={formData.album}
-          onChange={handleChange}
-          required
-          placeholder="Enter album name"
-          className="border rounded p-2 w-full"
-        />
-      </div>
 
       <div className="mb-4">
-        <label className="block text-sm font-medium mb-2">Genre</label>
+        <label htmlFor='genre-input' 
+        className="block text-sm font-medium mb-2">Genre</label>
         <input
+          id='genre-input'
           type="text"
           name="genre"
           value={formData.genre}
@@ -117,9 +131,11 @@ const SongForm = ({ selectedSong }) => {
       </div>
 
       <div className="mb-4">
-        <label className="block text-sm font-medium mb-2">Release Date</label>
+        <label htmlFor='releaseDate-input' 
+        className="block text-sm font-medium mb-2">Release Date</label>
         <input
-          type="date"
+        id='releaseDate-input'
+          type="text"
           name="releaseDate"
           value={formData.releaseDate}
           onChange={handleChange}
@@ -130,22 +146,28 @@ const SongForm = ({ selectedSong }) => {
       </div>
 
       <div className="mb-4">
-        <label className="block text-sm font-medium mb-2">Image URL</label>
+        <label htmlFor='image-input' 
+        className="block text-sm font-medium mb-2">Image URL</label>
         <input
           type="text"
-          name="albumImage"
-          value={formData.albumImage}
+          name="image"
+          value={formData.image}
           onChange={handleChange}
-          placeholder="Enter album image URL"
+          placeholder="Enter image URL"
+          id='image-input'
           className="border rounded p-2 w-full"
         />
       </div>
 
       <button
         type="submit"
-        className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+        className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-red-600"
       >
         Save Song
+      </button>
+      <button type='submit'
+      className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-red-600">
+        Edit Song 
       </button>
     </form>
   );

@@ -2,9 +2,9 @@ import React from 'react';
 
 const SongItem = ({ song, onDelete, onEdit }) => {
   return (
-    <li className="mb-4 p-4 border rounded">
+    <li className="min-w-[180px] p-2 px-3 rounded cursor-pointer">
       <h3 className="text-xl">{song.title}</h3>
-      <p>Artist: {song.artist}</p>
+      <p className='font-bold mt-2 mb-1'>Artist: {song.artist}</p>
       <p>Genre: {song.genre}</p>
       <p>Release Date: {new Date(song.releaseDate).toLocaleDateString()}</p>
       <div>

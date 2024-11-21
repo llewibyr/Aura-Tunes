@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ArtistService from '../service/ArtistService';
+import { useNavigate } from 'react-router-dom';
+
 
 const ArtistList = () => {
   const [artists, setArtists] = useState([]);
@@ -11,22 +13,23 @@ const ArtistList = () => {
  
  useEffect(() => {
 
-    const fetchArtists = async () => {
-        try {
-          const data = await ArtistService.getAllArtists();
-          console.log("Artists", artists);
-          console.log("Data", data);
-          setArtists(data);
-        } catch (error) {
-          console.log(error);
-          setError('Failed to fetch artists');
-        } finally {
-          setLoading(false);
-        }
-      };
+  const fetchArtists = async () => {
+    try {
+      const data = await ArtistService.getArtists();
+      console.log("Data", data);
+      setArtists(data);
+    } catch (error) {
+      console.log("Error fetching artists:", error);
+      setError(error.message || 'Failed to fetch artists');
+    } finally {
+      setLoading(false);
+    }
+  };
+  
+  
       
 
-    fetchArtists();
+    fetchArtists(); 
   }, []);
 
  
@@ -34,23 +37,23 @@ const ArtistList = () => {
     try {
       await ArtistService.deleteArtist(id);
       setArtists((prevArtists) => prevArtists.filter((artist) => artist._id !== id));
-    } catch {
+    } catch (error) {
       setError('Failed to delete artist'); 
-      console.log("can't delete artist",error);
+      console.log("Can't delete artist:", error);
     }
-   
   };
+  
   
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>{error}</div>;
 console.log("Artists",artists)
   return (
-    <div>
-      <h2 className="text-2xl font-bold">Artists</h2>
-        <ul>
+    <div className='bg-grey-200'>
+      <h2 className="text-3xl font text-center">Artists</h2>
+        <ul className='items-center'>
             {artists?.map((artist) => (
-            <li key={artist._id} className="mb-4 p-4 border rounded">
+            <li key={artist._id} className="mb-4 p-4 border rounded text-xl">
                 <h3 className="text-xl font-semibold">{artist.name}</h3>
 
                 <p><strong>Bio:</strong> {artist.bio || 'Not Avaliable'}</p>

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const NavBar = () => {
   return (
-    <nav className="bg-gray-800 p-4">
+    <nav className="bg-gray-700 p-6">
       <ul className="flex justify-between items-center space-x-4">
         <li className="text-white hover:text-gray-400">
           <Link to="/" >
@@ -16,7 +16,7 @@ const NavBar = () => {
           </Link>
         </li>
         <li className="text-white hover:text-gray-400">
-          <Link to="/new-song">
+          <Link to="/songs/add">
            Add A New Song
           </Link>
         </li>
