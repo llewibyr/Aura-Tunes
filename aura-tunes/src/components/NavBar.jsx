@@ -11,15 +11,25 @@ const NavBar = () => {
           </Link>
         </li>
         <li className=" text-white hover:text-gray-400">
-          <Link to="/top-tracks">
-            Top Tracks/Charts
+          <Link to="/song-list">
+            Song List 
           </Link>
         </li>
         <li className="text-white hover:text-gray-400">
           <Link to="/new-song">
-           Create A New Song
+           Add A New Song
           </Link>
         </li>
+        <li className="text-white hover:text-gray-400">
+          <Link to="/artist-list">
+            Artist List
+          </Link>
+            </li>
+            <li className="text-white hover:text-gray-400">
+              <Link to="/new-artist">
+              Add A Artist
+              </Link>
+            </li>
       </ul>
     </nav>
   );

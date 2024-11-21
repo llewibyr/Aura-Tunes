@@ -1,129 +1,155 @@
 import React, { useState, useEffect } from 'react';
-import SongService from '../service/SongServices';
+import SongServices from '../service/SongServices';
 
-const SongForm = ({ selectedSong, songSaved }) => {
+const SongForm = ({ selectedSong }) => {
   const [formData, setFormData] = useState({
-    title: "",
-    artist: "",
-    album: "",
-    duration: "",
-    genre: "",
+    title: '',
+    artist: '',
+    album: '',
+    genre: '',
+    albumImage: '',
+    releaseDate: '',
   });
 
+  
   useEffect(() => {
-    if (selectedSong && selectedSong.title) {
+    if (selectedSong) {
       setFormData({
-        title: selectedSong.title || "",
-        artist: selectedSong.artist || "",
-        album: selectedSong.album || "",
-        duration: selectedSong.duration || "",
-        genre: selectedSong.genre || "",
+        title: selectedSong.title || '',
+        artist: selectedSong.artist || '',
+        album: selectedSong.album || '',
+        genre: selectedSong.genre || '',
+        albumImage: selectedSong.albumImage || '',
+        releaseDate: selectedSong.releaseDate || '', 
       });
     }
   }, [selectedSong]);
 
   const handleChange = (event) => {
-    setFormData({
-      ...formData,
-      [event.target.name]: event.target.value,
-    });
+    const { name, value } = event.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
   };
 
+ 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      if (selectedSong && selectedSong._id) {
-        // Update song
-        await SongService.updateSong(selectedSong._id, formData);
+      if (selectedSong?._id) {
+        await SongServices.updateSong(selectedSong._id, formData);
       } else {
-        // Create new song
-        await SongService.createSong(formData);
+        await SongServices.createSong(formData);
       }
 
-      // Notify parent component that the song was saved
-      songSaved();
-
-      // Clear form after submission
+      
+      // songSaved();
       setFormData({
-        title: "",
-        artist: "",
-        album: "",
-        duration: "",
-        genre: "",
+        title: '',
+        artist: '',
+        album: '',
+        genre: '',
+        albumImage: '',
+        releaseDate: '', 
       });
     } catch (error) {
-      console.log("Error saving the song:", error);
+      console.error('Error saving the song:', error);
     }
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2>{selectedSong ? "Edit Song" : "Add A New Song"}</h2>
-      
-      <div>
-        <label>Title</label>
+      <h2 className="text-lg font-bold mb-4">
+        {selectedSong ? 'Edit Song' : 'Add A New Song'}
+      </h2>
+      <div className="mb-4">
+        <label className="block text-sm font-medium mb-2">Title</label>
         <input
           type="text"
           name="title"
           value={formData.title}
           onChange={handleChange}
           required
-          placeholder="Title"
+          placeholder="Enter song title"
+          className="border rounded p-2 w-full"
         />
       </div>
 
-      <div>
-        <label>Artist</label>
+      <div className="mb-4">
+        <label className="block text-sm font-medium mb-2">Artist</label>
         <input
           type="text"
           name="artist"
           value={formData.artist}
           onChange={handleChange}
           required
-          placeholder="Artist"
+          placeholder="Enter artist name"
+          className="border rounded p-2 w-full"
         />
       </div>
 
-      <div>
-        <label>Album</label>
+      <div className="mb-4">
+        <label className="block text-sm font-medium mb-2">Album</label>
         <input
           type="text"
           name="album"
           value={formData.album}
           onChange={handleChange}
           required
-          placeholder="Album"
+          placeholder="Enter album name"
+          className="border rounded p-2 w-full"
         />
       </div>
 
-      <div>
-        <label>Duration</label>
-        <input
-          type="text"
-          name="duration"
-          value={formData.duration}
-          onChange={handleChange}
-          required
-          placeholder="Duration"
-        />
-      </div>
-
-      <div>
-        <label>Genre</label>
+      <div className="mb-4">
+        <label className="block text-sm font-medium mb-2">Genre</label>
         <input
           type="text"
           name="genre"
           value={formData.genre}
           onChange={handleChange}
           required
-          placeholder="Genre"
+          placeholder="Enter song genre"
+          className="border rounded p-2 w-full"
         />
       </div>
 
-      <button type="submit">Save Song</button>
+      <div className="mb-4">
+        <label className="block text-sm font-medium mb-2">Release Date</label>
+        <input
+          type="date"
+          name="releaseDate"
+          value={formData.releaseDate}
+          onChange={handleChange}
+          placeholder="Enter release date"
+          required
+          className="border rounded p-2 w-full"
+        />
+      </div>
+
+      <div className="mb-4">
+        <label className="block text-sm font-medium mb-2">Image URL</label>
+        <input
+          type="text"
+          name="albumImage"
+          value={formData.albumImage}
+          onChange={handleChange}
+          placeholder="Enter album image URL"
+          className="border rounded p-2 w-full"
+        />
+      </div>
+
+      <button
+        type="submit"
+        className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+      >
+        Save Song
+      </button>
     </form>
   );
 };
 
 export default SongForm;
+
