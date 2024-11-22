@@ -60,7 +60,7 @@ const App = () => {
       const newSong = await SongServices.createSong(formData);
       console.log(newSong);
       setSongs([newSong, ...songs]);
-      navigate('/songs'); 
+      navigate('/song-list'); 
     } catch (error) {
       console.log(error);
     }
@@ -76,8 +76,8 @@ const App = () => {
       <NavBar />
       <Routes>
       <Route path="/" element={<LandingPage />} />
-        <Route path="/songs" element={<SongList />} /> 
-        <Route path= "/songs/add" element={<SongForm handleAddSong={handleAddSong} />} />
+        <Route path="/song-list" element={<SongList songs={songs} />} /> 
+        <Route path="/songs/add" element={<SongForm handleAddSong={handleAddSong} />} />
         <Route path="/artist-list" element={<ArtistList artist={artists} onDelete={handleDeleteArtist}/>} />
         <Route path="/new-artist" element={<ArtistForm addArtist={addArtist}/>} />
       </Routes>
