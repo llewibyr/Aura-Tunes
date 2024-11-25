@@ -1,54 +1,71 @@
-
 const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}`;
 
-const getSongs = async () => {
+export const getSongs = async () => {
   try {
     const response = await fetch(`${BASE_URL}songs`);
-    return response.data;
+    return response.json();
   } catch (error) {
-    console.log('Error fetching songs:', error);
-    throw error; 
+    throw error;
   }
 };
 
+export const getSong = async (id) => {
+  try {
+    const response = await fetch(`${BASE_URL}songs/${id}`);
+    return response.json();
+  } catch (error) {}
+};
 
-const createSong = async (songData) => {
-  console.log(songData)
-  try { 
+export const createSong = async (songData) => {
+  console.log(songData);
+  try {
     const options = {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(songData),
     };
     const response = await fetch(`${BASE_URL}songs/add`, options);
-    console.log(response)
-    return response.json(); 
+    return response.json();
   } catch (error) {
-    console.log('Error creating song:', error);
     throw error;
   }
 };
 
-
-const updateSong = async (id, songData) => {
+export const updateSong = async (id, songData) => {
   try {
-    const response = await fetch(`${BASE_URL}songs/${id}`,);
-    return response.data; 
+    const options = {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(songData),
+    };
+    const response = await fetch(`${BASE_URL}songs/${id}/update`, options);
+    return response.json();
   } catch (error) {
-    console.log('Error updating song:', error);
     throw error;
   }
 };
 
-
-const deleteSong = async (id) => {
+export const deleteSong = async (id) => {
   try {
-    const response = await fetch(`${BASE_URL}songs/${id}`);
-    return response.data; 
+    const options = {
+      method: "DELETE",
+    };
+    const response = await fetch(`${BASE_URL}songs/${id}`, options);
+    return response.json();
   } catch (error) {
-    console.log('Error deleting song:', error);
+    throw error;
+  }
+};
+
+export const getArtists = async () => {
+  try {
+    const response = await fetch(`${BASE_URL}artists`);
+    return response.json();
+  } catch (error) {
     throw error;
   }
 };
@@ -58,6 +75,6 @@ export default {
   createSong,
   updateSong,
   deleteSong,
+  getArtists,
+  getSong,
 };
-
-

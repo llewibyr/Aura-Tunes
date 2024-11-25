@@ -1,17 +1,23 @@
 import React from 'react';
 
-const SongItem = ({ song, onDelete, onEdit }) => {
+const SongItem = ({ song, onDelete, onUpdate }) => {
   return (
-    <li className="min-w-[180px] p-2 px-3 rounded cursor-pointer">
-      <h3 className="text-xl">{song.title}</h3>
-      <p className='font-bold mt-2 mb-1'>Artist: {song.artist}</p>
-      <p>Genre: {song.genre}</p>
-      <p>Release Date: {new Date(song.releaseDate).toLocaleDateString()}</p>
+    <li className="flex justify-between items-center border-b p-2">
       <div>
-        <button onClick={() => onEdit(song._id)} className="mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+        <h3 className="font-bold">{song.title}</h3>
+        <p className="text-sm">{song.artist?.name || 'Unknown Artist'}</p>
+      </div>
+      <div>
+        <button
+          onClick={() => onUpdate(song._id)}
+          className="bg-blue-500 text-white px-3 py-1 rounded mr-2"
+        >
           Edit
         </button>
-        <button onClick={() => onDelete(song._id)} className="mt-2 bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
+        <button
+          onClick={() => onDelete(song._id)}
+          className="bg-red-500 text-white px-3 py-1 rounded"
+        >
           Delete
         </button>
       </div>

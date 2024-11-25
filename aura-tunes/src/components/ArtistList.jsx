@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ArtistService from '../service/ArtistService';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 
 const ArtistList = () => {
@@ -25,10 +25,6 @@ const ArtistList = () => {
       setLoading(false);
     }
   };
-  
-  
-      
-
     fetchArtists(); 
   }, []);
 
@@ -42,27 +38,24 @@ const ArtistList = () => {
       console.log("Can't delete artist:", error);
     }
   };
-  
-  
+      if (loading) return <div>Loading...</div>;
+      if (error) return <div>{error}</div>;
+        console.log("Artists",artists)
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>{error}</div>;
-console.log("Artists",artists)
-  return (
-    <div className='bg-grey-200'>
-      <h2 className="text-3xl font text-center">Artists</h2>
-        <ul className='items-center'>
+
+         return (
+          <div className='text-xl  font-semibold flex items-center flex-row'>
+           <h2 className="text-2xl font text-center p-2 font-semibold ">Artists:</h2>
+           <ul className='items-center  shadow-lg border shadow-amber-100'>
             {artists?.map((artist) => (
-            <li key={artist._id} className="mb-4 p-4 border rounded text-xl">
-                <h3 className="text-xl font-semibold">{artist.name}</h3>
-
-                <p><strong>Bio:</strong> {artist.bio || 'Not Avaliable'}</p>
-
-                <p><strong>Genre:</strong> {artist.genre}</p>
-                <p><strong>Born:</strong> {new Date(artist.birthDate).toLocaleDateString()}</p>
+              <li key={artist._id} className="mb-4 p-5  border rounded-md border-black  text-center text-2xl">
+                <h3> {artist.name}</h3>
+             <p>Bio: {artist.bio || 'Not Avaliable'}</p>
+             <p>Genre: {artist.genre}</p>
+              <p>Born: {new Date(artist.birthDate).toLocaleDateString()}</p>
                 <button 
                 onClick={() => handleDelete(artist._id)} 
-                className="mt-2 bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
+                className="mt-2 bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 shadow-lg shadow-orange-400"
                 >
               Delete
             </button>
