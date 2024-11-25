@@ -65,19 +65,31 @@ const App = () => {
       console.log(error);
     }
   }
+
+
+  const handleUpdateSong = async (songId, formData) => {
+    try {
+      const updatedSong = await SongServices.updateSong(songId, formData);
+      setSongs((prevSongs) =>
+        prevSongs.map((song) => (song._id === songId ? updatedSong : song))
+      );
+      
+      navigate('/song-list');
+    } catch (error) {
+      console.log('Error updating song:', error);
+    }
+  };
   
-
-
-
-
+  
   
   return (
-    <div className='h-screen bg-cyan-300'>
+    <div className='h-screen bg-indigo-500'>
       <NavBar />
       <Routes>
       <Route path="/" element={<LandingPage />} />
         <Route path="/song-list" element={<SongList songs={songs} />} /> 
         <Route path="/songs/add" element={<SongForm handleAddSong={handleAddSong} />} />
+        <Route path ="/songs/:id/update" element={<SongForm handleUpdateSong={handleUpdateSong} handleAddSong={handleAddSong}/>} />
         <Route path="/artist-list" element={<ArtistList artist={artists} onDelete={handleDeleteArtist}/>} />
         <Route path="/new-artist" element={<ArtistForm addArtist={addArtist}/>} />
       </Routes>

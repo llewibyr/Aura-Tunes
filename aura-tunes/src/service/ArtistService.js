@@ -1,7 +1,5 @@
 
-
 const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}`;
-
 
 
 
@@ -37,9 +35,9 @@ const updateArtist = async (id, artistData) => {
     const response = await fetch(`${BASE_URL}artists/${id}`, {
       method: 'PUT',  // Use 'PUT' for update
       headers: {
-        'Content-Type': 'application/json', // Make sure the content type is set to JSON
+        'Content-Type': 'application/json', 
       },
-      body: JSON.stringify(artistData), // Send the artist data in the request body
+      body: JSON.stringify(artistData), 
     });
 
     if (!response.ok) {

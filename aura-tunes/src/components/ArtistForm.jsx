@@ -25,12 +25,13 @@ import { useNavigate } from 'react-router-dom';
    }
 
    return (
-    <main>
-        <h2>
+    <main>  
+         <form  className=' justify-center font-semibold text-center flex flex-col text-2xl m-3 w-screen items-center' onSubmit={handleSubmit}>
+        <h2  className="text-2xl text-center font-semibold mb-3">
             Add Artist
         </h2>
-        <form onSubmit={handleSubmit}>
-            <label htmlFor='name'>Artist Name:</label>
+        <div className="w-80 grid p-5 mb-5 border-2 bg-white rounded-xl shadow-xl" >
+            <label htmlFor='name'>Artist Name</label>
             <input
                 type='text'
                 id='name'
@@ -39,6 +40,9 @@ import { useNavigate } from 'react-router-dom';
                 onChange={handleChange}
                 placeholder='Artist Name'
                 />
+                </div>
+
+                <div className="w-80 grid p-5 mb-5 border-2 bg-white rounded-xl shadow-xl">
             <label htmlFor='bio'>Bio:</label>
             <input
                 type='text'
@@ -48,7 +52,10 @@ import { useNavigate } from 'react-router-dom';
                 onChange={handleChange}
                 placeholder='Bio'
                 />
-            <label htmlFor='genre'>Genre:</label>
+                 </div>
+
+                 <div className="w-80 grid p-5 mb-5 border-2 bg-white rounded-xl shadow-xl">
+            <label htmlFor='genre'>Genre</label>
             <input
                 type='text'
                 id='genre'
@@ -57,7 +64,9 @@ import { useNavigate } from 'react-router-dom';
                 onChange={handleChange}
                 placeholder='Genre'
                 />
-            <label htmlFor='birthDate'>Birth Date:</label>
+                </div>
+                <div className="w-80 grid p-5 mb-5 border-2 bg-white rounded-xl shadow-xl">
+            <label htmlFor='birthDate'>Birth Date</label>
             <input
                 type='text'
                 id='birthDate'
@@ -66,7 +75,10 @@ import { useNavigate } from 'react-router-dom';
                 onChange={handleChange}
                 placeholder='Birth Date'
                 />
-                <button type='submit'>Add Artist</button>
+                </div>
+                <button type='submit'
+                className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 shadow-xl"
+                >Add Artist</button>
         </form>
     </main>
    )

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import * as SongServices from '../service/SongServices';
 
-const SongForm = ({ handleAddSong }) => {  // Destructure handleAddSong from props
+const SongForm = ({ handleAddSong,handleUpdateSong}) => {  
   const [formData, setFormData] = useState({
     title: '',
     artist: '',
@@ -12,7 +12,8 @@ const SongForm = ({ handleAddSong }) => {  // Destructure handleAddSong from pro
   });
   const [artists, setArtists] = useState([]);
 
-  const { songId } = useParams();
+  const { id } = useParams();
+
 
   useEffect(() => {
     const fetchArtists = async () => {
@@ -25,9 +26,9 @@ const SongForm = ({ handleAddSong }) => {  // Destructure handleAddSong from pro
     };
 
     const fetchSong = async () => {
-      if (songId) {
+      if (id) {
         try {
-          const songData = await SongServices.getSong(songId);
+          const songData = await SongServices.getSong(id);
           setFormData({
             title: songData.title || '',
             artist: songData.artist || '',
@@ -36,14 +37,14 @@ const SongForm = ({ handleAddSong }) => {  // Destructure handleAddSong from pro
             image: songData.image || '',
           });
         } catch (error) {
-          console.error('Error fetching song:', error);
+          console.log('Error fetching song:', error);
         }
       }
     };
 
     fetchArtists();
     fetchSong();
-  }, [songId]);
+  }, [id]);
 
   useEffect(() => {
     if (artists.length > 0 && !formData.artist) {
@@ -64,17 +65,26 @@ const SongForm = ({ handleAddSong }) => {  // Destructure handleAddSong from pro
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleAddSong(formData);  // Call the function passed as a prop
+    if (id) {
+      // If there's an id, it's an update
+      handleUpdateSong(id, formData);
+    } else {
+      // If no id, it's a new song
+      handleAddSong(formData);
+    }
   };
 
+
+  
+
   return (
-    <form onSubmit={handleSubmit}>
-      <h2 className="text-lg font-bold mb-4">
-        {songId ? 'Edit Song' : 'Add A New Song'}
+    <form className=' justify-center font-semibold text-center flex flex-col text-2xl m-3 w-screen items-center' onSubmit={handleSubmit}>
+      <h2 className="text-2xl text-center font-semibold mb-3">
+        {id ? 'Edit Song' : 'New Song'}
       </h2>
 
-      <div className="mb-4">
-        <label htmlFor="title-input" className="block text-sm font-medium mb-2">Song Name</label>
+      <div className="w-80 grid p-5 mb-5 border-2 bg-white rounded-xl shadow-xl">
+        <label htmlFor="title-input"> Song Name</label>
         <input
           id="title-input"
           type="text"
@@ -83,19 +93,19 @@ const SongForm = ({ handleAddSong }) => {  // Destructure handleAddSong from pro
           onChange={handleChange}
           required
           placeholder="Enter song title"
-          className="border rounded p-2 w-full"
+          className="p-1 w-full"
         />
       </div>
 
-      <div className="mb-4">
-        <label htmlFor="artist-input" className="block text-sm font-medium mb-2">Artist</label>
+      <div className="w-80 grid p-5 mb-7 border-2 bg-white rounded-xl shadow-xl">
+        <label htmlFor="artist-input">Artist</label>
         <select
           id="artist-input"
           name="artist"
           value={formData.artist}
           onChange={handleChange}
           required
-          className="border rounded p-2 w-full"
+          className="p-1 w-full"
         >
           <option value="" disabled>Select an artist</option>
           {artists.map((artist) => (
@@ -106,8 +116,8 @@ const SongForm = ({ handleAddSong }) => {  // Destructure handleAddSong from pro
         </select>
       </div>
 
-      <div className="mb-4">
-        <label htmlFor="genre-input" className="block text-sm font-medium mb-2">Genre</label>
+      <div className="w-80 grid p-5 mb-7 border-2 bg-white rounded-xl shadow-xl">
+        <label htmlFor="genre-input">Genre</label>
         <input
           id="genre-input"
           type="text"
@@ -116,12 +126,12 @@ const SongForm = ({ handleAddSong }) => {  // Destructure handleAddSong from pro
           onChange={handleChange}
           required
           placeholder="Enter song genre"
-          className="border rounded p-2 w-full"
+          className="p-1 w-full"
         />
       </div>
 
-      <div className="mb-4">
-        <label htmlFor="releaseDate-input" className="block text-sm font-medium mb-2">Release Date</label>
+      <div className="w-80 grid p-5 mb-7 border-2 bg-white rounded-xl shadow-xl">
+        <label htmlFor="releaseDate-input">Release Date</label>
         <input
           id="releaseDate-input"
           type="text"
@@ -130,12 +140,12 @@ const SongForm = ({ handleAddSong }) => {  // Destructure handleAddSong from pro
           onChange={handleChange}
           placeholder="Enter release date"
           required
-          className="border rounded p-2 w-full"
+          className="p-1 w-full"
         />
       </div>
 
-      <div className="mb-4">
-        <label htmlFor="image-input" className="block text-sm font-medium mb-2">Image URL</label>
+      <div className="w-80 grid p-5 mb-7 border-2 bg-white rounded-xl shadow-xl">
+        <label htmlFor="image-input">Image URL</label>
         <input
           type="text"
           name="image"
@@ -143,16 +153,17 @@ const SongForm = ({ handleAddSong }) => {  // Destructure handleAddSong from pro
           onChange={handleChange}
           placeholder="Enter image URL"
           id="image-input"
-          className="border rounded p-2 w-full"
+          className="p-1 w-full"
         />
       </div>
 
       <button
         type="submit"
-        className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+        className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 shadow-xl"
       >
-        {songId ? 'Edit Song' : 'Save Song'}
+        {id ? 'Edit Song' : 'Save Song'}
       </button>
+
     </form>
   );
 };
