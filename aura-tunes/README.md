@@ -70,6 +70,6 @@
 
 - Sign In And Sign Out Features
 
-- May Want To Include A Music Player For Users Play The Songs They Have Created
+- May Want To Include A Music Player for users to play the songs that they have created
 
 - Add A Music Api For Songs And Artist
