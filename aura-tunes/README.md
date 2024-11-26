@@ -1,5 +1,16 @@
 # Aura-Tunes - Feel The Beat Write The Vibes
 
+
+![Screenshot 2024-11-26 085343](https://github.com/user-attachments/assets/6c4071f7-d55a-47be-9b9a-1f548a708322)
+
+
+
+![Screenshot 2024-11-26 090926](https://github.com/user-attachments/assets/91a4bba7-7218-46b5-a2b5-6bddf8b9a321)
+
+
+
+
+
 ## About - Aura Tunes is a dynamic, personalized music app that brings you Aura and access new Songs and Artists that you never knew about Created Song List, Artist and discover new music as well. Built with React,Node.js and Express. AuraTunes bring your music taste to life with an interactive and inutiative interface.
 
 ## Features
