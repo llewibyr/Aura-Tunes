@@ -35,7 +35,7 @@ const ArtistForm = (props) => {
   return (
     <main>
       <form
-        className=" justify-center font-semibold text-center flex flex-col text-2xl m-3 w-screen items-center"
+        className="justify-center font-semibold text-center flex flex-col text-2xl m-3 w-screen h-screen items-center"
         onSubmit={handleSubmit}
       >
         <h2 className="text-2xl text-center font-semibold mb-3">Add Artist</h2>

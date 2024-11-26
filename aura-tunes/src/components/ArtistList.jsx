@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ArtistService from '../service/ArtistService';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 const ArtistList = () => {
@@ -43,13 +43,15 @@ const ArtistList = () => {
         console.log("Artists",artists)
 
 
-         return (
-          <div className='text-xl  font-semibold flex items-center flex-row'>
-           <h2 className="text-2xl font text-center p-2 font-semibold ">Artists:</h2>
-           <ul className='items-center  shadow-lg border shadow-amber-100'>
+         return ( 
+         <>
+         <h2 className="text-3xl font text-center p-2 font-semibold ">Artists:</h2>
+          <div className='text-xl  font-semibold flex items-center flex-row shadow-lg'>
+          
+           <ul className='items-center  shadow-lg border rounded-md shadow-amber-500'>
             {artists?.map((artist) => (
               <li key={artist._id} className="mb-4 p-5  border rounded-md border-black  text-center text-2xl">
-                <h3> {artist.name}</h3>
+                <h3 className='text-3xl'> {artist.name}</h3>
              <p>Bio: {artist.bio || 'Not Avaliable'}</p>
              <p>Genre: {artist.genre}</p>
               <p>Born: {new Date(artist.birthDate).toLocaleDateString()}</p>
@@ -63,6 +65,7 @@ const ArtistList = () => {
         ))}
       </ul>
     </div>
+    </>
   );
 };
 
