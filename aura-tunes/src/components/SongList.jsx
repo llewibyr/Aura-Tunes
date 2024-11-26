@@ -36,39 +36,46 @@ const SongList = () => {
   if (error) return <div>{error}</div>;
 
   return (
-    <div className="  w-screen h-screen justify-center text-xl font-semibold flex items-center flex-row">
-      <h2 className="text-2xl font text-center p-2 font-semibold"> Songs:</h2>
-      <ul className="items-center justify-between">
-        {songs.map((song) => (
-          <li
-            className="mb-4 p-5 text-center border rounded-md border-blue-950 text-2xl"
-            key={song._id}
-          >
-            <p>Song:{song.title}</p>
-            <p>Artist: {song.artist.name}</p>
-            <p>Genre: {song.genre}</p>
-            <p>
-              Release Date: {new Date(song.releaseDate).toLocaleDateString()}
-            </p>
-            <img
-              src={song.image}
-              alt={song.title}
-              className="w-full h-48 object-cover rounded-md"
-            />
+    <>
+      <h2 className="text-3xl font text-center p-2 font-semibold"> Songs:</h2>
+      <div className="justify-center text-xl font-semibold flex items-center">
+        <div>
+          <ul className="items-center justify-between">
+            {songs.map((song) => (
+              <li
+                className="mb-4 p-5 text-center border-4 rounded-md border-cyan-700 text-2xl"
+                key={song._id}
+              >
+                <p>Song: {song.title}</p>
+                <p>Artist: {song.artist.name}</p>
+                <p>Genre: {song.genre}</p>
+                <p>
+                  Release Date:{" "}
+                  {new Date(song.releaseDate).toLocaleDateString()}
+                </p>
+                <img
+                  src={song.image}
+                  alt={song.title}
+                  className="w-full h-full object-cover rounded-md"
+                />
 
-            <button
-              className="mt-2 bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 shadow-lg shadow-orange-400"
-              onClick={() => handleDelete(song._id)}
-            >
-              Delete
-            </button>
-            <Link to={`/songs/${song._id}/update`}>
-              <button>Edit</button>
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
+                <button
+                  className="mt-2 bg-red-500 text-white px-4 py-2 rounded-md hover:bg-yellow-600 shadow-lg shadow-orange-200"
+                  onClick={() => handleDelete(song._id)}
+                >
+                  Delete
+                </button>
+                <Link to={`/songs/${song._id}/update`}>
+                  <button className="mt-2 bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-green-600 shadow-lg shadow-orange-200 mx-8 delay-300 duration-300 ease-in-out">
+                    Edit
+                  </button>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </>
   );
 };
 
