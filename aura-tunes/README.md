@@ -17,7 +17,7 @@
 
 
 
-## About - Aura Tunes is a dynamic, personalized music collection app that brings you Aura and access new Songs and Artists that you never knew about Created Song List, Artist and discover new music as well. Built with React,Node.js and Express. AuraTunes bring your music taste to life with an interactive and inutiative interface.
+## About - Aura Tunes is a dynamic, personalized music collection app that brings you Aura and access new Songs and Artists that you never knew about you can create,add,update and delete Song List, Artist and discover new music as well. Built with React,Node.js and Express. AuraTunes bring your music taste to life with an interactive and inutiative interface.
 
 ## Features
 
