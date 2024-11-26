@@ -1,7 +1,13 @@
 # Aura-Tunes - Feel The Beat Write The Vibes
 
 
+
+
+
+
+
 ![Screenshot 2024-11-26 085343](https://github.com/user-attachments/assets/6c4071f7-d55a-47be-9b9a-1f548a708322)
+
 
 
 
