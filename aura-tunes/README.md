@@ -1,27 +1,38 @@
-# Aura-Tunes
+# Aura-Tunes - Feel The Beat Write The Vibes
 
-## About - Aura Tunes is a dynamic, personmalized streaming music web app that connects to Spotify to let you access your favorite music that brings you Aura and access new musics and access explore playlists and discover new music as well. Built with React,Node.js and Express. AuraTunes bring your music library to life with an interactive and inutiative interface.
+## About - Aura Tunes is a dynamic, personalized music app that brings you Aura and access new Songs and Artists that you never knew about Created Song List, Artist and discover new music as well. Built with React,Node.js and Express. AuraTunes bring your music taste to life with an interactive and inutiative interface.
 
 ## Features
 
-- Spotify Login: Securely log in Spotify to access your playlist
+- users will be able to create their artists.
 
-- Music Player : Play, pause skip , and adjust volume with an easy-in-app player
+- users will be able to add a biography about their artists.
 
-- Playlist Management: Browse and select from your Spotify playlist to customize to your own experience.
+- users will be able to create a song for the artist they created such as song, genre , album or single cover photo and release date
 
-- Song Search : Quickly search for songs,artist and albums directly from the application.
+- users will be able to see their artist that they created on the artist list among other created artists
+
+- users will be able to see their songs that they have created among other songs that other users created on the song list.
+
+- users wil be able to delete the artist that created
+
+- users will be able to delete the song that they have created.
+
+- users will be able to edit the song that they have created and it will redirect them to the song form.
 
 ## Getting Started: (deployment link)
 
-## Attributions :
+## FrontEnd Github Link : [https://github.com/llewibyr/Aura-Tunes/tree/main/aura-tunes] Aura Tunes
+
+## Attributions:
 
 1. [http://www.geekforgeeks] GeeksForGeeks
 2. [http://www.developer.mozilla.org/en-US/] MDN
-3. [https://developer.spotify.com/] Spotify Developers
+3. [https://stackoverflow.com/] Stack OverFlow
 4. [https://dev.to/] Dev Community
 5. [https://www.mongodb.com/] Mongo Db
 6. [https://chatgpt.com/] ChatGPT
+7. [https://react.dev/] React Dev
 
 ## Technologies used:
 
@@ -37,3 +48,11 @@
 10. Heroku
 
 ## Next Step :
+
+- Adding A JWT Token For Authorization and Authenticaion
+
+- Sign In And Sign Out Features
+
+- May Want To Include A Music Player For Users Play The Songs They Have Created
+
+- Add A Music Api For Songs And Artist

@@ -14,7 +14,6 @@ const ArtistForm = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(formData);
     props.addArtist(formData);
     setFormData(initalState);
     navigate("/artist-list");
@@ -23,14 +22,6 @@ const ArtistForm = (props) => {
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
-
-// const handleChange = (event) => {
-//     const { name, value } = event.target;
-//     setFormData((prevData) => ({
-//       ...prevData,
-//       [name]: value,
-//     }));
-//   };
 
   return (
     <main>
