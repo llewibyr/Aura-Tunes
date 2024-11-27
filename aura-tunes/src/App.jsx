@@ -66,7 +66,7 @@ const App = () => {
   };
 
   return (
-    <div className=" w-full bg-indigo-400 h-full">
+    <div className=" w-screen bg-indigo-400 ">
       <NavBar />
       <Routes>
         <Route path="/" element={<LandingPage />} />

@@ -24,7 +24,7 @@ const ArtistForm = (props) => {
   };
 
   return (
-    <>
+    
     <main>
        <h2 className="text-4xl text-center font-semibold mb-1 mt-4">Add Artist</h2>
       <form
@@ -86,7 +86,7 @@ const ArtistForm = (props) => {
         </button>
       </form>
     </main>
-    </>
+    
   );
 };
 export default ArtistForm;

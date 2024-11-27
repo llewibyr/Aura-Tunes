@@ -38,9 +38,9 @@ const SongList = () => {
   return (
     <>
       <h2 className="text-3xl font text-center p-2 font-semibold"> Songs:</h2>
-      <div>
+
       <div className="justify-center text-xl font-semibold flex items-center">
-        
+        <div>
           <ul className="items-center justify-between">
             {songs.map((song) => (
               <li
