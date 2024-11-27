@@ -47,7 +47,7 @@ const SongList = () => {
                 key={song._id}
               >
                 <p>Song: {song.title}</p>
-                <p>Artist: {song.artist.name}</p>
+                <p>Artist: {song.artist?.name}</p>
                 <p>Genre: {song.genre}</p>
                 <p>
                   Release Date:{" "}
