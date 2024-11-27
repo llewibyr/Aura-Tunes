@@ -37,7 +37,7 @@
 
 - users will be able to edit the song that they have created and it will redirect them to the song form.
 
-## Getting Started: (deployment link) Front End: [https://67468070330f677826cb975d--auratunes.netlify.app/]
+## Getting Started: (deployment link) Front End: [https://auratunes.netlify.app/]
 ## Back End Deployment Link: [https://aura-tunes-backend-8d99c21e342e.herokuapp.com/]
 
 ## FrontEnd Github Link : [https://github.com/llewibyr/Aura-Tunes/tree/main/aura-tunes] Aura Tunes
