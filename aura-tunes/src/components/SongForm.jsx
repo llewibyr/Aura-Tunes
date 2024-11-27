@@ -73,7 +73,7 @@ const SongForm = ({ handleAddSong, handleUpdateSong }) => {
         {id ? "Edit Song" : "New Song"}
       </h2>
       <form
-        className=" justify-center font-semibold text-center flex flex-col text-2xl m-3 w-screen h-screen items-center"
+        className=" justify-center font-semibold text-center flex flex-col text-2xl m-3 items-center h-screen w-screen"
         onSubmit={handleSubmit}
       >
         <div className="w-80 grid p-5 mb-5 border-2 bg-white rounded-xl shadow-xl">
