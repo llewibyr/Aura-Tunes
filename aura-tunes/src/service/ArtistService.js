@@ -1,5 +1,6 @@
 const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}`;
 
+// const BASE_URL= "localhost:2490/"
 const getArtists = async () => {
   try {
     const response = await fetch(`${BASE_URL}artists`);
@@ -29,7 +30,7 @@ const createArtist = async (artistData) => {
 const updateArtist = async (id, artistData) => {
   try {
     const response = await fetch(`${BASE_URL}artists/${id}`, {
-      method: "PUT", // Use 'PUT' for update
+      method: "PUT", 
       headers: {
         "Content-Type": "application/json",
       },
