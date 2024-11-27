@@ -24,10 +24,11 @@ const ArtistForm = (props) => {
   };
 
   return (
+    <>
     <main>
        <h2 className="text-4xl text-center font-semibold mb-1 mt-4">Add Artist</h2>
       <form
-        className="justify-center font-semibold text-center flex flex-col text-2xl m-3 w-screen h-screen items-center"
+        className="justify-center font-semibold text-center flex flex-col text-2xl m-3  h-screen items-center"
         onSubmit={handleSubmit}
       >
        
@@ -85,6 +86,7 @@ const ArtistForm = (props) => {
         </button>
       </form>
     </main>
+    </>
   );
 };
 export default ArtistForm;

@@ -29,7 +29,7 @@ const createArtist = async (artistData) => {
 const updateArtist = async (id, artistData) => {
   try {
     const response = await fetch(`${BASE_URL}artists/${id}`, {
-      method: "PUT", 
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },

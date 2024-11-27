@@ -38,9 +38,9 @@ const ArtistList = () => {
   return (
     <>
       <h2 className="text-3xl font text-center p-2 font-semibold ">Artists:</h2>
-      <div className="text-xl  font-semibold flex items-center flex-row shadow-lg">
+      <div className="text-xl  font-semibold flex items-center flex-row shadow-lg w-screen">
         <ul className="items-center  shadow-lg border rounded-md shadow-amber-500">
-          {artists?.map((artist) => (
+          {artists.map((artist) => (
             <li
               key={artist._id}
               className="mb-4 p-5  border rounded-md border-black  text-center text-2xl"
