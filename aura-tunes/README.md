@@ -35,7 +35,9 @@ Interactive Interface: The user-friendly UI allows for seamless navigation throu
 
 ## Getting Started
 To explore Aura Tunes, check out the live demo and deployment links below:
+
 Front End: [https://auratunes.netlify.app/]
+
  Back End: [https://aura-tunes-backend-8d99c21e342e.herokuapp.com/]
 
 ## Github Repositiories
