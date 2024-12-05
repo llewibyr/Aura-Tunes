@@ -21,27 +21,25 @@
 
 ## Features
 
-- users will be able to create their artists.
+-Create Artists: Users can create custom artists and provide a detailed biography.
 
-- users will be able to add a biography about their artists.
+Manage Songs: Add songs to your artists, including details like song title, genre, album cover, and release date.
 
-- users will be able to create a song for the artist they created such as song, genre , album or single cover photo and release date
+View Artist and Song Collections: Users can browse their created artists and songs, alongside those from other users.
 
-- users will be able to see their artist that they created on the artist list among other created artists
+Edit and Delete: Modify or remove artists and songs that you have created at any time.
 
-- users will be able to see their songs that they have created among other songs that other users created on the song list.
+Interactive Interface: The user-friendly UI allows for seamless navigation through your music collections.
 
-- users wil be able to delete the artist that created
+## Getting Started
+To explore Aura Tunes, check out the live demo and deployment links below:
+Front End: [https://auratunes.netlify.app/]
+ Back End: [https://aura-tunes-backend-8d99c21e342e.herokuapp.com/]
 
-- users will be able to delete the song that they have created.
+## Github Repositiories
 
-- users will be able to edit the song that they have created and it will redirect them to the song form.
-
-## Getting Started: (deployment link) Front End: [https://auratunes.netlify.app/]
-## Back End Deployment Link: [https://aura-tunes-backend-8d99c21e342e.herokuapp.com/]
-
-## FrontEnd Github Link : [https://github.com/llewibyr/Aura-Tunes/tree/main/aura-tunes] Aura Tunes
-## BackEnd GitHub Link : [https://github.com/saikamara59/Aura-tunez-backend] BackEnd Aura Tunes
+ FrontEnd Github Link : [https://github.com/llewibyr/Aura-Tunes/tree/main/aura-tunes] Aura Tunes
+ BackEnd GitHub Link : [https://github.com/saikamara59/Aura-tunez-backend] BackEnd Aura Tunes
 
 ## Attributions:
 
@@ -55,23 +53,22 @@
 
 ## Technologies used:
 
-1. Express
-2. Mongoose
-3. MongoDb
-4. EJS
-5. HTML
-6. JavaScript
-7. REACT
-8. Node
-9. Tailwind Css
-10. Heroku
+Aura Tunes is built using the following technologies:
+
+Frontend: React, Tailwind CSS, HTML, JavaScript
+
+Backend: Express, Node.js, MongoDB, Mongoose, EJS
+
+Deployment: Heroku, Netlify
 
 ## Next Step :
 
-- Adding A JWT Token For Authorization and Authenticaion
+Here are some planned features and improvements for Aura Tunes:
 
-- Sign In And Sign Out Features
+JWT Authentication: Adding JSON Web Tokens (JWT) for secure user authentication and authorization.
 
-- May Want To Include A Music Player for users to play the songs that they have created
+Sign In/Sign Out: Implementing user authentication features with Sign In and Sign Out functionality.
 
-- Add A Music Api For Songs And Artist
+Music Player: Integrating a music player for users to listen to the songs they've created.
+
+External Music API: Adding an API for discovering and adding new songs and artists.
